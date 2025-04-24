@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation, Autoplay } from 'swiper';
@@ -60,15 +60,25 @@ const TestimonialsSection = () => {
           spaceBetween={30}
           slidesPerView={1}
           pagination={{ clickable: true }}
-          navigation={true}
+          navigation={{
+            nextEl: '.testimonial-next',
+            prevEl: '.testimonial-prev',
+          }}
           autoplay={{ delay: 5000, disableOnInteraction: false }}
           breakpoints={{
             768: {
               slidesPerView: 2,
             },
           }}
-          className="testimonial-swiper"
+          className="testimonial-swiper relative"
         >
+          {/* Custom navigation buttons, hidden on small screens */}
+          <div className="testimonial-prev absolute left-0 top-1/2 transform -translate-y-1/2 z-10 text-accent text-3xl font-bold transition hover:scale-110 cursor-pointer hidden sm:block">
+            &lt;
+          </div>
+          <div className="testimonial-next absolute right-0 top-1/2 transform -translate-y-1/2 z-10 text-accent text-3xl font-bold transition hover:scale-110 cursor-pointer hidden sm:block">
+            &gt;
+          </div>
           {testimonials.map((testimonial) => (
             <SwiperSlide key={testimonial.id}>
               <div className="bg-gray-100 p-8 rounded-xl shadow-md">

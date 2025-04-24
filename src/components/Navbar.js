@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { FiMenu, FiX } from 'react-icons/fi';
-import logo from '../assets/logo.png';
+
+const LogoSVG = () => (
+  <svg width="40" height="40" viewBox="0 0 48 48" fill="none">
+    <circle cx="24" cy="24" r="24" fill="#01AB6C"/>
+    <path d="M24 12L29 28H19L24 12Z" fill="white"/>
+    <circle cx="24" cy="33" r="3" fill="white"/>
+  </svg>
+);
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,8 +32,9 @@ const Navbar = () => {
     <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-black shadow-lg' : 'bg-transparent'}`}>
       <div className="container mx-auto px-6 py-3">
         <div className="flex items-center justify-between">
-          <div className="flex items-center">
-            <img src={logo} alt="Divine Raylight Consultancy" className="h-12" />
+          <div className="flex items-center gap-2">
+            <LogoSVG />
+            <span className="text-lg font-bricolage font-bold text-white hidden sm:inline">Divine Raylight</span>
           </div>
           
           {/* Desktop Navigation */}

@@ -1,13 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-  font-family: 'Poppins', sans-serif;
-  background-color: #ffffff;
-  color: #333333;
+  font-family: 'Poppins', 'Bricolage Grotesque', sans-serif;
+  background-color: #FFFFFF;
+  color: #002B18;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Bricolage Grotesque', 'Poppins', sans-serif;
+  color: #002B18;
 }
 
 .section-padding {

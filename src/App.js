@@ -5,9 +5,10 @@ import AboutSection from './components/AboutSection';
 import ServicesSection from './components/ServicesSection';
 import StatsSection from './components/StatsSection';
 import TestimonialsSection from './components/TestimonialsSection';
-import PartnersSection from './components/PartnersSection';
+// import PartnersSection from './components/PartnersSection';
 import CallToAction from './components/CallToAction';
 import Footer from './components/Footer';
+import ContactSection from './components/ContactSection';
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
       <ServicesSection />
       <StatsSection />
       <TestimonialsSection />
-      <PartnersSection />
+      {/* <PartnersSection /> */}
+      <ContactSection />
       <CallToAction />
       <Footer />
     </div>

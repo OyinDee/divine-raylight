@@ -6,16 +6,19 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#000000",
-        secondary: "#333333",
-        accent: "#ffffff",
+        primary: "#002B18",
+        accent: "#01AB6C",
+        black: "#000000",
+        white: "#FFFFFF",
+        // Optionally, override gray if needed
         gray: {
-          light: "#f5f5f5",
-          medium: "#e0e0e0",
-          dark: "#333333"
+          100: "#f5f5f5",
+          200: "#e0e0e0",
+          700: "#333333",
         }
       },
       fontFamily: {
+        bricolage: ["'Bricolage Grotesque'", "sans-serif"],
         poppins: ["Poppins", "sans-serif"],
       },
       animation: {

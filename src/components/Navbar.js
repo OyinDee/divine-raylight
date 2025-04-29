@@ -1,13 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FiMenu, FiX } from 'react-icons/fi';
-
-const LogoSVG = () => (
-  <svg width="40" height="40" viewBox="0 0 48 48" fill="none">
-    <circle cx="24" cy="24" r="24" fill="#01AB6C"/>
-    <path d="M24 12L29 28H19L24 12Z" fill="white"/>
-    <circle cx="24" cy="33" r="3" fill="white"/>
-  </svg>
-);
+import logo from '../assets/4.png'; // <-- Add this import
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,8 +26,8 @@ const Navbar = () => {
       <div className="container mx-auto px-6 py-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <LogoSVG />
-            <span className="text-lg font-bricolage font-bold text-white hidden sm:inline">Divine Raylight</span>
+            <img src={logo} alt="Divine Raylight Logo" className="h-10 w-auto" />
+            {/* <span className="text-lg font-bricolage font-bold text-white hidden sm:inline">Divine Raylight</span> */}
           </div>
           
           {/* Desktop Navigation */}
@@ -61,11 +54,7 @@ const Navbar = () => {
             </ul>
           </nav>
           
-          <div className="hidden md:block">
-            <a href="#apply" className="bg-white text-black px-6 py-2 rounded-md font-medium hover:bg-gray-200 transition-all">
-              Apply Online
-            </a>
-          </div>
+
           
           {/* Mobile Menu Button */}
           <div className="md:hidden">
@@ -100,11 +89,6 @@ const Navbar = () => {
             </li>
             <li>
               <a href="#contact" className="block text-white hover:text-gray-300 py-2" onClick={() => setIsOpen(false)}>Contact</a>
-            </li>
-            <li className="pt-2">
-              <a href="#apply" className="block w-full text-center bg-white text-black px-4 py-2 rounded-md font-medium" onClick={() => setIsOpen(false)}>
-                Apply Online
-              </a>
             </li>
           </ul>
         </div>

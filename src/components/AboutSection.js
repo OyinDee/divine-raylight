@@ -38,19 +38,19 @@ const AboutSection = () => {
               </h2>
               
               <p className="text-gray-700 mb-6 font-poppins">
-                Divine Raylight Consultancy is a leading international education and migration agency with years of professional placement and visa counseling services. We represent and place clients into opportunities around the world.
+                Divine Raylight Consultancy is dedicated to empowering individuals to achieve their dreams abroad. With a passion for excellence, we provide honest advice, practical solutions, and ongoing support for your international ambitions.
               </p>
               
               <p className="text-gray-700 mb-6 font-poppins">
-                We're on a mission to become Nigeria's foremost travel and destinations manager of choice by striving to be the finest and most competitive service provider, exceeding customer expectations with impeccable and personalized services.
+                Our vision is to be the most trusted partner for global mobility, offering innovative services that open doors to education, careers, and new experiences worldwide.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 mt-8">
                 <a href="#services" className="btn-animate bg-accent text-white px-6 py-3 rounded-md font-bold text-center shadow hover:bg-primary transition-all font-poppins">
-                  Our Services
+                  See Our Services
                 </a>
                 <a href="#contact" className="border-2 border-accent text-accent px-6 py-3 rounded-md font-bold hover:bg-accent hover:text-white transition-all text-center font-poppins">
-                  Contact Us
+                  Get in Touch
                 </a>
               </div>
             </motion.div>

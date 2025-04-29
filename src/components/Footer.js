@@ -1,15 +1,6 @@
 import React from 'react';
 import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
-// import logo from '../assets/logo.png';
-// Use a simple text logo for now
-
-const LogoSVG = () => (
-  <svg width="40" height="40" viewBox="0 0 48 48" fill="none">
-    <circle cx="24" cy="24" r="24" fill="#01AB6C"/>
-    <path d="M24 12L29 28H19L24 12Z" fill="white"/>
-    <circle cx="24" cy="33" r="3" fill="white"/>
-  </svg>
-);
+import logo from '../assets/4.png';
 
 const Footer = () => {
   return (
@@ -19,11 +10,11 @@ const Footer = () => {
           {/* Company Information */}
           <div>
             <div className="h-12 mb-6 flex items-center gap-3">
-              <LogoSVG />
-              <span className="text-2xl font-bricolage font-bold text-accent">Divine Raylight</span>
+              <img src={logo} alt="Divine Raylight Logo" className="h-10 w-auto" />
+              {/* <span className="text-2xl font-bricolage font-bold text-accent">Divine Raylight</span> */}
             </div>
             <p className="text-gray-100 mb-6">
-              We are on a mission to become Nigeria's foremost travel and destinations manager of choice, exceeding customer expectations with impeccable and personalized services.
+              Empowering your journey abroad with reliable guidance, transparent processes, and a commitment to your success. Your aspirations, our expertise.
             </p>
             <div className="flex space-x-4 mt-4">
               <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="bg-accent text-primary p-2 rounded-full hover:bg-white hover:text-accent transition-colors">
@@ -75,7 +66,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center">
                 <FaPhone className="mr-3 text-accent" />
-                <a href="tel:+2348131057809" className="text-gray-100 hover:text-accent transition-colors">+234 123 456 7890</a>
+                <a href="tel:+2348131057809" className="text-gray-100 hover:text-accent transition-colors">+234 813 105 7809</a>
               </li>
               <li className="flex items-center">
                 <FaEnvelope className="mr-3 text-accent" />
@@ -89,7 +80,7 @@ const Footer = () => {
         
         <div className="text-center text-gray-300 font-poppins">
           <p>
-            © {new Date().getFullYear()} <span className="text-accent font-bricolage">Divine Raylight Consultancy</span>. All Rights Reserved.
+            © {new Date().getFullYear()} <span className="text-accent font-bricolage">Divine Raylight Consultancy</span>. All rights reserved. Designed for your next adventure.
           </p>
         </div>
       </div>

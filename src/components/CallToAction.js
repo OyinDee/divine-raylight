@@ -14,7 +14,7 @@ const CallToAction = () => {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            Ready to Start Your Migration Journey?
+            Take the First Step Toward Your Global Future
           </motion.h2>
           
           <motion.p 
@@ -24,7 +24,7 @@ const CallToAction = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: true }}
           >
-            We represent and place clients into opportunities around the world. Let's help you achieve your dream of living, studying, or working abroad.
+            Our team is ready to guide you through every stage of your international journey. Connect with us to explore your options and get started today.
           </motion.p>
           
           <motion.div
@@ -35,10 +35,12 @@ const CallToAction = () => {
             viewport={{ once: true }}
           >
             <a 
-              href="#contact" 
+              href="https://wa.me/2348131057809"
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn-animate bg-accent text-white px-8 py-4 rounded-md font-bold inline-block shadow hover:bg-white hover:text-accent transition-all"
             >
-              Apply Now
+              Start Conversation
             </a>
             <a
               href="https://wa.me/2348131057809"

@@ -66,7 +66,7 @@ const HeroSection = () => {
         />
       </div>
       
-      <div className="container mx-auto px-6 z-10">
+      <div className="container mx-auto px-6 z-10 flex flex-col items-center justify-center h-full">
         <div className="max-w-3xl">
           <motion.h1 
             className="text-5xl md:text-6xl font-bold mb-6"

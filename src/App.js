@@ -9,7 +9,7 @@ import TestimonialsSection from './components/TestimonialsSection';
 // import PartnersSection from './components/PartnersSection';
 import CallToAction from './components/CallToAction';
 import Footer from './components/Footer';
-import ContactSection from './components/ContactSection';
+// import ContactSection from './components/ContactSection';
 import BlogList from './components/BlogList';
 import BlogAdmin from './components/BlogAdmin';
 import AdminLogin from './components/AdminLogin';

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation, Autoplay } from 'swiper';
@@ -6,39 +6,31 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { FaQuoteLeft, FaStar } from 'react-icons/fa';
-
-const testimonials = [
-  {
-    id: 1,
-    name: 'John Doe',
-    position: 'UK Study Visa Recipient 2022',
-    text: 'Divine Raylight Consultancy made my migration process stress-free! Since I met all their requirements, my application was processed very fast. I got my decision sooner than expected.',
-    rating: 5
-  },
-  {
-    id: 2,
-    name: 'Sarah Johnson',
-    position: 'Canada Study Visa Recipient 2022',
-    text: 'I want to say a very big thank you for making the dream of traveling for masters possible. Their timely reply and response, always ready to answer numerous questions was impressive.',
-    rating: 5
-  },
-  {
-    id: 3,
-    name: 'Michael Brown',
-    position: 'USA Tourist Visa 2023',
-    text: 'Divine Raylight Consultancy is the epitome of excellence, professionalism, and distinct work ethics. They are dedicated to making sure they have satisfied customers with perfect connections.',
-    rating: 5
-  },
-  {
-    id: 4,
-    name: 'Amanda Lee',
-    position: 'Australian Work Visa 2023',
-    text: 'Quite glad I went with Divine Raylight Consultancy immigration services. They have the best human relations immigration experts. I will recommend them always to anyone looking to migrate.',
-    rating: 5
-  }
-];
+import { db } from '../firebase';
+import { collection, getDocs, query, orderBy } from 'firebase/firestore';
 
 const TestimonialsSection = () => {
+  const [testimonials, setTestimonials] = useState([]);
+
+  useEffect(() => {
+    const fetchTestimonials = async () => {
+      const q = query(collection(db, "testimonials"), orderBy("createdAt", "desc"));
+      const snapshot = await getDocs(q);
+      setTestimonials(
+        snapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data(),
+          // fallback for missing fields
+          name: doc.data().author || "Anonymous",
+          position: doc.data().position || "",
+          text: doc.data().content || "",
+          rating: doc.data().rating || 5
+        }))
+      );
+    };
+    fetchTestimonials();
+  }, []);
+
   return (
     <section id="testimonials" className="section-padding bg-white">
       <div className="container mx-auto px-6">
@@ -107,3 +99,4 @@ const TestimonialsSection = () => {
 };
 
 export default TestimonialsSection;
+

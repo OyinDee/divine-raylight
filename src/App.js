@@ -9,13 +9,15 @@ import TestimonialsSection from './components/TestimonialsSection';
 // import PartnersSection from './components/PartnersSection';
 import CallToAction from './components/CallToAction';
 import Footer from './components/Footer';
-// import ContactSection from './components/ContactSection';
+import ContactSection from './components/ContactSection';
 import BlogList from './components/BlogList';
 import BlogAdmin from './components/BlogAdmin';
 import AdminLogin from './components/AdminLogin';
 import TestimonialList from './components/TestimonialList';
 import TestimonialAdmin from './components/TestimonialAdmin';
+import LatestBlog from './components/LatestBlog';
 import { auth } from './firebase';
+import { signOut } from "firebase/auth";
 
 function App() {
   const [admin, setAdmin] = useState(null);
@@ -25,44 +27,72 @@ function App() {
     return unsub;
   }, []);
 
+  const handleAdminLogout = async () => {
+    await signOut(auth);
+    setAdmin(null);
+  };
+
   return (
     <Router>
       <div className="App">
-        <Navbar />
         <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <HeroSection />
-                <AboutSection />
-                <ServicesSection />
-                <StatsSection />
-                <TestimonialsSection />
-                <BlogList />
-                <TestimonialList />
-                <CallToAction />
-              </>
-            }
-          />
           <Route
             path="/admin"
             element={
               admin ? (
                 <>
+                  <Navbar admin onLogout={handleAdminLogout} />
                   <BlogAdmin />
                   <TestimonialAdmin />
                 </>
               ) : (
-                <AdminLogin />
+                <>
+                  <Navbar admin />
+                  <AdminLogin />
+                </>
               )
             }
           />
-          <Route path="/blog" element={<BlogList />} />
-          <Route path="/testimonials" element={<TestimonialList />} />
+          <Route
+            path="/"
+            element={
+              <>
+                <Navbar />
+                <HeroSection />
+                <AboutSection />
+                <ServicesSection />
+                <StatsSection />
+                <TestimonialsSection />
+                <LatestBlog />
+                <ContactSection />
+                <CallToAction />
+                {/* <PartnersSection /> */}
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path="/blog"
+            element={
+              <>
+                <Navbar blog />
+                <BlogList />
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path="/testimonials"
+            element={
+              <>
+                <Navbar />
+                <TestimonialList />
+                <Footer />
+              </>
+            }
+          />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
-        <Footer />
       </div>
     </Router>
   );

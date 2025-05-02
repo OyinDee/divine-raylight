@@ -20,9 +20,17 @@ const planeVariants = {
 
 const HeroSection = () => {
   return (
-    <section id="home" className="relative h-screen flex items-center justify-center bg-primary text-white overflow-hidden font-bricolage">
+    <section
+      id="home"
+      className="relative h-screen flex items-center justify-center text-white overflow-hidden font-bricolage"
+      style={{
+        backgroundImage: `url('https://images.unsplash.com/photo-1744792423553-70a2f22eb93f?w=1500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGFpcnBvcnQlMjB3aXRoJTIwdHJhdmVsbGVyc3xlbnwwfHwwfHx8MA%3D%3D')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
+    >
       {/* Background overlay with gradient */}
-      <div className="absolute inset-0 bg-gradient-to-r from-primary to-black opacity-90"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-primary to-black" style={{opacity: 0.7}}></div>
       
       {/* Animated Plane */}
       <motion.div
@@ -74,7 +82,7 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <span className="text-white">Actualizing Your</span> <span className="text-accent">Migration Dreams</span>
+            <span className="text-white">We Do It Different.</span> <span className="text-accent">No Complications.</span>
           </motion.h1>
           
           <motion.p 
@@ -83,7 +91,7 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Easiest, fastest, and safest way to study, work, or live abroad
+            You don't need anyone to travel, but you don't need the stress either. We take the stress off you, tell you things most travel companies keep from you, carry you along, share your logins, and walk you through every phase professionally.
           </motion.p>
           
           <motion.div

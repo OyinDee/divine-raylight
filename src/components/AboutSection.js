@@ -17,7 +17,7 @@ const AboutSection = () => {
               {/* Plane image with accent border and shadow */}
               <div className="absolute -top-4 -left-4 w-64 h-64 bg-accent rounded-lg -z-10 opacity-20"></div>
               <img 
-                src="https://images.unsplash.com/photo-1464037866556-6812c9d1c72e?auto=format&fit=crop&w=800&q=80" 
+                src="https://images.unsplash.com/photo-1574175294984-7f2b90bdc07a?q=80&w=1937&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
                 alt="Airplane flying over clouds" 
                 className="rounded-lg shadow-xl w-full h-auto object-cover"
               />
@@ -44,6 +44,11 @@ const AboutSection = () => {
               <p className="text-gray-700 mb-6 font-poppins">
                 Our vision is to be the most trusted partner for global mobility, offering innovative services that open doors to education, careers, and new experiences worldwide.
               </p>
+              
+              <p className="text-gray-700 mb-6 font-poppins">
+                At Divine Raylight Consultancy, we believe in doing things differently. We remove the complications and stress from your travel journey. You don't need anyone to travel, but you also don't need the hassle—let us handle it for you.
+              </p>
+              
               
               <div className="flex flex-col sm:flex-row gap-4 mt-8">
                 <a href="#services" className="btn-animate bg-accent text-white px-6 py-3 rounded-md font-bold text-center shadow hover:bg-primary transition-all font-poppins">

@@ -22,12 +22,28 @@ const ContactSection = () => {
   const formRef = useRef(null);
   const [submitted, setSubmitted] = useState(false);
   const [open, setOpen] = useState(false);
+  const [sending, setSending] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', formRef.current, 'YOUR_USER_ID')
-      .then(() => setSubmitted(true))
-      .catch((err) => alert('Failed to send message.'));
+    setSending(true);
+    emailjs.sendForm(
+      process.env.REACT_APP_EMAILJS_SERVICE_ID,
+      process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+      formRef.current,
+      process.env.REACT_APP_EMAILJS_USER_ID
+    )
+      .then(() => {
+        setSubmitted(true);
+        setSending(false);
+        formRef.current.reset();
+      })
+      .catch((err) => {
+        // Log the full error object for debugging
+        console.error("EmailJS error:", err);
+        alert('Failed to send message.');
+        setSending(false);
+      });
   };
 
   return (
@@ -105,8 +121,9 @@ const ContactSection = () => {
                       <button
                         type="submit"
                         className="btn-animate bg-accent text-white px-8 py-3 rounded-md font-bold shadow hover:bg-primary transition-all"
+                        disabled={sending}
                       >
-                        Send Message
+                        {sending ? "Sending..." : "Send Message"}
                       </button>
                       <a
                         href={`https://wa.me/${whatsappNumber}`}
@@ -119,7 +136,7 @@ const ContactSection = () => {
                     </div>
                     {submitted && (
                       <div className="text-green-600 font-bold mt-4 text-center">
-                        Thank you! Your message window has opened.
+                        Thank you! Your message has been sent.
                       </div>
                     )}
                   </form>

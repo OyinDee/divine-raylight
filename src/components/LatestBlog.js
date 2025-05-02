@@ -24,25 +24,47 @@ function LatestBlog() {
   if (!latest) return null;
 
   return (
-    <section className="bg-white rounded-xl shadow-lg border border-gray-100 px-8 py-12 w-full max-w-3xl mx-auto mt-12">
-      <h2 className="text-3xl font-bold mb-8 text-primary font-bricolage text-center">Latest Blog Post</h2>
-      <div className="flex flex-col md:flex-row gap-6 p-6 bg-gray-50 rounded-lg shadow service-card">
-        {latest.imageUrl && (
-          <img src={latest.imageUrl} alt={latest.title} className="w-full md:w-48 h-48 object-cover rounded-lg shadow" />
-        )}
-        <div className="flex-1">
-          <h3 className="text-2xl font-bold text-primary font-bricolage mb-2">{latest.title}</h3>
-          <span className="text-xs text-gray-400 block mb-2">{latest.createdAt?.toDate?.().toLocaleString()}</span>
-          <p className="text-gray-700 font-poppins">{latest.content}</p>
+    <section className="py-20 bg-gradient-to-br from-white via-gray-50 to-accent/10">
+      <div className="max-w-3xl mx-auto px-4">
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-primary font-bricolage mb-10">
+          Latest Blog Post
+        </h2>
+        <div className="flex justify-center">
+          <div className="relative flex flex-col md:flex-row bg-white rounded-2xl shadow-xl border border-accent/20 overflow-hidden w-full max-w-2xl hover:shadow-2xl transition">
+            {/* Accent bar */}
+            <div className="absolute left-0 top-0 h-full w-2 bg-accent rounded-l-2xl"></div>
+            {/* Blog image */}
+            {latest.imageUrl && (
+              <div className="flex-shrink-0 flex items-center justify-center p-6 md:p-8">
+                <img
+                  src={latest.imageUrl}
+                  alt={latest.title}
+                  className="w-40 h-40 md:w-48 md:h-48 object-cover rounded-xl shadow border-4 border-accent/10"
+                />
+              </div>
+            )}
+            {/* Blog content */}
+            <div className="flex-1 flex flex-col justify-center px-6 py-6 md:py-8">
+              <h3 className="text-2xl md:text-3xl font-bold text-primary font-bricolage mb-2">
+                {latest.title}
+              </h3>
+              <span className="text-xs text-accent font-semibold mb-3 block">
+                {latest.createdAt?.toDate?.().toLocaleString()}
+              </span>
+              <p className="text-gray-700 font-poppins text-base md:text-lg mb-2">
+                {latest.content}
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
-      <div className="flex justify-center mt-8">
-        <button
-          onClick={handleReadMore}
-          className="bg-accent hover:bg-primary text-white font-bold px-6 py-3 rounded-md transition-all shadow font-poppins"
-        >
-          Read More Blog Posts
-        </button>
+        <div className="flex justify-center mt-10">
+          <button
+            onClick={handleReadMore}
+            className="bg-accent hover:bg-primary text-white font-bold px-8 py-3 rounded-md transition-all shadow font-poppins"
+          >
+            Read More Blog Posts
+          </button>
+        </div>
       </div>
     </section>
   );

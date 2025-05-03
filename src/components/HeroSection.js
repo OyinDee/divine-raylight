@@ -77,21 +77,22 @@ const HeroSection = () => {
       <div className="container mx-auto px-6 z-10 flex flex-col items-center justify-center h-full">
         <div className="max-w-3xl">
           <motion.h1 
-            className="text-3xl md:text-6xl font-bold mb-6"
+            className="text-5xl md:text-6xl font-bold mb-6 leading-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <span className="text-white">We Do It Different.</span> <span className="text-accent">No Complications.</span>
+            <span className="text-white">Your Journey,</span><br />
+            <span className="text-accent">Our Expertise.</span>
           </motion.h1>
           
           <motion.p 
-            className="text-xl md:text-2xl mb-10 text-white/80 font-poppins"
+            className="text-xl md:text-2xl mb-10 text-white/80 font-poppins leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            You don't need anyone to travel, but you don't need the stress either. We take the stress off you, tell you things most travel companies keep from you, carry you along, share your logins, and walk you through every phase professionally.
+            You can travel on your own—but you don't have to do it alone. We remove the stress, keep you informed with what others won't tell you, give you full access to your application process, and guide you through every step with transparency and professionalism.
           </motion.p>
           
           <motion.div

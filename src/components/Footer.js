@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
 import logo from '../assets/4.png';
 
@@ -10,8 +11,9 @@ const Footer = () => {
           {/* Company Information */}
           <div>
             <div className="h-12 mb-6 flex items-center gap-3">
-              <img src={logo} alt="Divine Raylight Logo" className="h-10 w-auto" />
-              {/* <span className="text-2xl font-bricolage font-bold text-accent">Divine Raylight</span> */}
+              <Link to="/admin">
+                <img src={logo} alt="Divine Raylight Logo" className="h-10 w-auto" />
+              </Link>
             </div>
             <p className="text-gray-100 mb-6">
               Empowering your journey abroad with reliable guidance, transparent processes, and a commitment to your success. Your aspirations, our expertise.

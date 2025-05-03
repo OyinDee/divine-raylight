@@ -38,11 +38,11 @@ const AboutSection = () => {
               </h2>
               
               <p className="text-gray-700 mb-6 font-poppins">
-                Divine Raylight Consultancy is dedicated to empowering individuals to achieve their dreams abroad. With a passion for excellence, we provide honest advice, practical solutions, and ongoing support for your international ambitions.
+                Divine Raylight Consultancy is dedicated to empowering individuals to achieve their dreams abroad. With 9 years of excellence and expertise, we provide honest advice, practical solutions, and ongoing support for your international ambitions.
               </p>
               
               <p className="text-gray-700 mb-6 font-poppins">
-                Our vision is to be the most trusted partner for global mobility, offering innovative services that open doors to education, careers, and new experiences worldwide.
+                Our vision is to be the most trusted partner for global mobility, specializing in Canada, UK, USA, Ireland, Malta, Australia, New Zealand, and other European destinations. We offer innovative services that open doors to education, careers, and new experiences worldwide.
               </p>
               
               <p className="text-gray-700 mb-6 font-poppins">

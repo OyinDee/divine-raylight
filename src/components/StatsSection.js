@@ -3,13 +3,13 @@ import { motion } from 'framer-motion';
 import { FaRegClock, FaPassport, FaUserFriends, FaGlobeAmericas } from 'react-icons/fa';
 
 const stats = [
-	{ id: 1, value: 2, label: 'Years in Business', desc: 'Building trust and expertise since our founding.', icon: <FaRegClock /> },
-	{ id: 2, value: 210, label: 'Visas Processed', desc: 'Successfully guided hundreds through visa journeys.', icon: <FaPassport /> },
-	{ id: 3, value: 100, label: 'Clients Processed', desc: 'Personalized support for every unique story.', icon: <FaUserFriends /> },
-	{ id: 4, value: 6, label: 'Destinations', desc: 'Opportunities in top countries worldwide.', icon: <FaGlobeAmericas /> },
+	{ id: 1, value: 7, label: 'Years in Business', desc: 'Trusted expertise since 2018.', icon: <FaRegClock />, showPlus: false },
+	{ id: 2, value: 100, label: 'Visas Processed', desc: 'Successful visa applications across multiple countries.', icon: <FaPassport />, showPlus: true },
+	{ id: 3, value: 50, label: 'Happy Clients', desc: 'Satisfied clients achieving their dreams abroad.', icon: <FaUserFriends />, showPlus: true },
+	{ id: 4, value: 8, label: 'Key Destinations', desc: 'Canada, UK, USA, Ireland, Malta, Australia, New Zealand & Europe', icon: <FaGlobeAmericas />, showPlus: false },
 ];
 
-const Counter = ({ target, duration = 2 }) => {
+const Counter = ({ target, duration = 2, showPlus = false }) => {
 	const [count, setCount] = useState(0);
 	const nodeRef = useRef(null);
 	const observerRef = useRef(null);
@@ -48,7 +48,11 @@ const Counter = ({ target, duration = 2 }) => {
 		};
 	}, [target, duration]);
 
-	return <span ref={nodeRef}>{count}</span>;
+	return (
+		<span ref={nodeRef}>
+			{count}{showPlus ? '+' : ''}
+		</span>
+	);
 };
 
 const StatsSection = () => {
@@ -69,7 +73,7 @@ const StatsSection = () => {
 								{stat.icon}
 							</div>
 							<h3 className="text-5xl font-extrabold mb-2 text-white font-bricolage drop-shadow-lg">
-								<Counter target={stat.value} />
+								<Counter target={stat.value} showPlus={stat.showPlus} />
 							</h3>
 							<div className="text-lg font-semibold text-white/90 mb-2 text-center">{stat.label}</div>
 							<div className="text-white/70 text-center text-sm">{stat.desc}</div>

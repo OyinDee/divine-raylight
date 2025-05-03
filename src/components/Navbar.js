@@ -40,14 +40,16 @@ const Navbar = ({ admin, blog, onLogout }) => {
                   <li>
                     <a href="/" className="text-white hover:text-gray-300 font-medium">Go to Home</a>
                   </li>
-                  <li>
-                    <button
-                      onClick={onLogout}
-                      className="ml-4 bg-red-500 hover:bg-red-600 text-white font-bold px-4 py-2 rounded transition"
-                    >
-                      Logout
-                    </button>
-                  </li>
+                  {onLogout && (
+                    <li>
+                      <button
+                        onClick={onLogout}
+                        className="ml-4 bg-red-500 hover:bg-red-600 text-white font-bold px-4 py-2 rounded transition"
+                      >
+                        Logout
+                      </button>
+                    </li>
+                  )}
                 </>
               ) : (
                 <>
@@ -96,14 +98,16 @@ const Navbar = ({ admin, blog, onLogout }) => {
                 <li>
                   <a href="/" className="block text-white hover:text-gray-300 py-2" onClick={() => setIsOpen(false)}>Go to Home</a>
                 </li>
-                <li>
-                  <button
-                    onClick={() => { setIsOpen(false); onLogout && onLogout(); }}
-                    className="w-full bg-red-500 hover:bg-red-600 text-white font-bold px-4 py-2 rounded transition text-left"
-                  >
-                    Logout
-                  </button>
-                </li>
+                {onLogout && (
+                  <li>
+                    <button
+                      onClick={() => { setIsOpen(false); onLogout(); }}
+                      className="w-full bg-red-500 hover:bg-red-600 text-white font-bold px-4 py-2 rounded transition text-left"
+                    >
+                      Logout
+                    </button>
+                  </li>
+                )}
               </>
             ) : (
               <>

@@ -6,23 +6,23 @@ const services = [
 	{
 		id: 1,
 		icon: <FaGraduationCap className="text-4xl mb-4 text-accent" />,
-		title: 'Personalized Guidance',
+		title: 'Academic Services',
 		description:
-			'Receive tailored advice for your travel, study, or relocation plans. Our experts help you identify the best opportunities and destinations based on your unique goals and background.',
+			'Complete admission processing, educational research papers, and compelling personal statements. We guide you through the entire academic journey.',
 	},
 	{
 		id: 2,
 		icon: <FaPassport className="text-4xl mb-4 text-accent" />,
-		title: 'Document Assistance',
+		title: 'Immigration Services',
 		description:
-			'We review and organize your documents for smooth application processes. From visa paperwork to admission forms, our team ensures accuracy and compliance every step of the way.',
+			'Expert handling of study visas, Canadian PR applications, tourist visas, and strategic visa application planning for optimal success rates.',
 	},
 	{
 		id: 3,
 		icon: <FaPlane className="text-4xl mb-4 text-accent animate-bounce" />,
-		title: 'Travel & Logistics',
+		title: 'Travel & Settlement',
 		description:
-			'Let us handle your travel arrangements, including flights and accommodation. We secure the best deals and provide ongoing support to make your journey stress-free.',
+			'Comprehensive flight bookings and accommodation arrangements to ensure a smooth transition to your destination country.',
 	},
 ];
 
@@ -38,10 +38,13 @@ const ServicesSection = () => {
 					viewport={{ once: true }}
 				>
 					<h2 className="text-3xl md:text-4xl font-bricolage font-bold mb-4 text-primary">
-						What We <span className="text-accent">Offer</span>
+						Our <span className="text-accent">Services</span>
 					</h2>
+					<p className="text-gray-700 font-poppins mb-4">
+						With 7 years of expertise, we've successfully guided countless individuals through their international journey.
+					</p>
 					<p className="text-gray-700 font-poppins">
-						Unlock new opportunities for education, work, and adventure. We provide end-to-end support for your international aspirations.
+						Our expertise spans across major destinations including Canada, United Kingdom, United States, Ireland, Malta, Australia, New Zealand, and other European countries.
 					</p>
 				</motion.div>
 
@@ -65,6 +68,31 @@ const ServicesSection = () => {
 						</motion.div>
 					))}
 				</div>
+
+				<motion.div
+					className="text-center mt-16 animate-on-scroll"
+					initial={{ opacity: 0, y: 30 }}
+					whileInView={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.6, delay: 0.3 }}
+					viewport={{ once: true }}
+				>
+					<div className="bg-white p-6 rounded-xl shadow-lg max-w-3xl mx-auto">
+						<h3 className="text-xl font-bold mb-4 text-primary font-bricolage">
+							Our Complete Service List:
+						</h3>
+						<ul className="grid grid-cols-1 md:grid-cols-2 gap-3 text-left text-gray-700 font-poppins">
+							<li className="flex items-center gap-2">✓ Admission Processing</li>
+							<li className="flex items-center gap-2">✓ Study Visa Processing</li>
+							<li className="flex items-center gap-2">✓ Visa Application Strategy</li>
+							<li className="flex items-center gap-2">✓ Canadian Permanent Residency</li>
+							<li className="flex items-center gap-2">✓ Tourist Visa Application</li>
+							<li className="flex items-center gap-2">✓ Flight Booking</li>
+							<li className="flex items-center gap-2">✓ Accommodation Booking</li>
+							<li className="flex items-center gap-2">✓ Educational Research Papers</li>
+							<li className="flex items-center gap-2">✓ Personal Statement</li>
+						</ul>
+					</div>
+				</motion.div>
 
 				<motion.div
 					className="text-center mt-12 animate-on-scroll"

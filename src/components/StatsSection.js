@@ -3,10 +3,10 @@ import { motion } from 'framer-motion';
 import { FaRegClock, FaPassport, FaUserFriends, FaGlobeAmericas } from 'react-icons/fa';
 
 const stats = [
-	{ id: 1, value: 2, label: 'Years in Business', desc: 'Building trust and expertise since our founding.', icon: <FaRegClock /> },
-	{ id: 2, value: 210, label: 'Visas Processed', desc: 'Successfully guided hundreds through visa journeys.', icon: <FaPassport /> },
-	{ id: 3, value: 100, label: 'Clients Processed', desc: 'Personalized support for every unique story.', icon: <FaUserFriends /> },
-	{ id: 4, value: 6, label: 'Destinations', desc: 'Opportunities in top countries worldwide.', icon: <FaGlobeAmericas /> },
+	{ id: 1, value: 7, label: 'Years in Business', desc: 'Trusted expertise since 2016.', icon: <FaRegClock /> },
+	{ id: 2, value: 500, label: 'Visas Processed', desc: 'Successful visa applications across multiple countries.', icon: <FaPassport /> },
+	{ id: 3, value: 1000, label: 'Happy Clients', desc: 'Satisfied clients achieving their dreams abroad.', icon: <FaUserFriends /> },
+	{ id: 4, value: 8, label: 'Key Destinations', desc: 'Canada, UK, USA, Ireland, Malta, Australia, New Zealand & Europe', icon: <FaGlobeAmericas /> },
 ];
 
 const Counter = ({ target, duration = 2 }) => {

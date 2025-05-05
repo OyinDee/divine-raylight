@@ -5,7 +5,7 @@ import { FaRegClock, FaPassport, FaUserFriends, FaGlobeAmericas } from 'react-ic
 const stats = [
 	{ id: 1, value: 7, label: 'Years in Business', desc: 'Trusted expertise since 2018.', icon: <FaRegClock />, showPlus: false },
 	{ id: 2, value: 100, label: 'Visas Processed', desc: 'Successful visa applications across multiple countries.', icon: <FaPassport />, showPlus: true },
-	{ id: 3, value: 50, label: 'Happy Clients', desc: 'Satisfied clients achieving their dreams abroad.', icon: <FaUserFriends />, showPlus: true },
+	{ id: 3, value: 123, label: 'Happy Clients', desc: 'Satisfied clients achieving their dreams abroad.', icon: <FaUserFriends />, showPlus: true },
 	{ id: 4, value: 8, label: 'Key Destinations', desc: 'Canada, UK, USA, Ireland, Malta, Australia, New Zealand & Europe', icon: <FaGlobeAmericas />, showPlus: false },
 ];
 

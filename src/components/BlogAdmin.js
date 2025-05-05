@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { db } from "../firebase";
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 import { collection, addDoc, deleteDoc, doc, getDocs, updateDoc, query, orderBy, serverTimestamp } from "firebase/firestore";
 
 function BlogAdmin() {
@@ -99,6 +101,29 @@ function BlogAdmin() {
     setImageUrl("");
   };
 
+  // Quill modules configuration
+  const modules = {
+    toolbar: [
+      [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+      ['bold', 'italic', 'underline', 'strike'],
+      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+      [{ 'indent': '-1'}, { 'indent': '+1' }],
+      ['link', 'image'],
+      [{ 'color': [] }, { 'background': [] }],
+      [{ 'font': [] }],
+      [{ 'align': [] }],
+      ['clean']
+    ],
+  };
+
+  const formats = [
+    'header',
+    'bold', 'italic', 'underline', 'strike',
+    'list', 'bullet', 'indent',
+    'link', 'image',
+    'color', 'background', 'font', 'align'
+  ];
+
   // Pagination logic
   const totalPages = Math.ceil(posts.length / postsPerPage);
   const paginatedPosts = posts.slice(
@@ -107,7 +132,7 @@ function BlogAdmin() {
   );
 
   return (
-    <section className="bg-white rounded-xl shadow-lg border border-gray-100 px-8 py-8 w-full max-w-2xl mx-auto mt-8">
+    <section className="bg-white rounded-xl shadow-lg border border-gray-100 px-8 py-8 w-full max-w-4xl mx-auto mt-8">
       <h2 className="text-2xl font-bold mb-6 text-primary font-bricolage text-center mt-12">Manage Blog</h2>
       <form onSubmit={handleAdd} className="mb-8 flex flex-col gap-4">
         <input
@@ -118,17 +143,19 @@ function BlogAdmin() {
           required
           disabled={loading}
         />
-        <textarea
-          className="border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-accent transition font-poppins"
-          value={content}
-          onChange={e => setContent(e.target.value)}
-          placeholder="Content"
-          required
-          rows={4}
-          disabled={loading}
-        />
-        <div>
-          <label className="block mb-1 font-medium text-gray-700">Image</label>
+        <div className="h-96">
+          <ReactQuill
+            theme="snow"
+            value={content}
+            onChange={setContent}
+            modules={modules}
+            formats={formats}
+            placeholder="Write your blog post..."
+            className="h-80"
+          />
+        </div>
+        <div className="mt-4">
+          <label className="block mb-1 font-medium text-gray-700">Featured Image</label>
           <input
             type="file"
             accept="image/*"
@@ -136,7 +163,6 @@ function BlogAdmin() {
             className="block"
             disabled={loading}
           />
-          {/* Show preview if imageUrl exists, else show preview of selected file */}
           {(imageUrl || image) && (
             <img
               src={imageUrl || (image && URL.createObjectURL(image))}
@@ -165,22 +191,21 @@ function BlogAdmin() {
           )}
         </div>
       </form>
+
       <div className="space-y-6">
         {paginatedPosts.map(post => (
-          <div key={post.id} className="p-4 border rounded-lg flex flex-col md:flex-row gap-4 items-center bg-gray-50 shadow service-card">
+          <div key={post.id} className="p-4 border rounded-lg flex flex-col gap-4 bg-gray-50 shadow service-card">
+            <div className="flex items-center justify-between">
+              <strong className="text-lg font-bricolage text-primary">{post.title}</strong>
+              <span className="text-xs text-gray-400">{post.createdAt?.toDate?.().toLocaleString()}</span>
+            </div>
             {post.imageUrl && (
-              <img src={post.imageUrl} alt={post.title} className="w-32 h-32 object-cover rounded-lg shadow" />
+              <img src={post.imageUrl} alt={post.title} className="w-full h-48 object-cover rounded-lg shadow" />
             )}
-            <div className="flex-1 w-full">
-              <div className="flex items-center justify-between">
-                <strong className="text-lg font-bricolage text-primary">{post.title}</strong>
-                <span className="text-xs text-gray-400">{post.createdAt?.toDate?.().toLocaleString()}</span>
-              </div>
-              <p className="text-gray-700 font-poppins mt-2">{post.content}</p>
-              <div className="flex gap-2 mt-4">
-                <button onClick={() => handleEdit(post)} className="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded font-poppins">Edit</button>
-                <button onClick={() => handleDelete(post.id)} className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded font-poppins">Delete</button>
-              </div>
+            <div className="prose max-w-none" dangerouslySetInnerHTML={{ __html: post.content }} />
+            <div className="flex gap-2">
+              <button onClick={() => handleEdit(post)} className="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded font-poppins">Edit</button>
+              <button onClick={() => handleDelete(post.id)} className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded font-poppins">Delete</button>
             </div>
           </div>
         ))}

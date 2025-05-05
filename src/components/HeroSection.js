@@ -77,7 +77,7 @@ const HeroSection = () => {
       <div className="container mx-auto px-6 z-10 flex flex-col items-center justify-center h-full">
         <div className="max-w-3xl">
           <motion.h1 
-            className="text-2xl md:text-6xl font-bold mb-6 leading-tight"
+            className="text-3xl md:text-6xl font-bold mb-6 leading-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -87,7 +87,7 @@ const HeroSection = () => {
           </motion.h1>
           
           <motion.p 
-            className="text-xl md:text-2xl mb-10 text-white/80 font-poppins leading-relaxed"
+            className="text-lg md:text-2xl mb-10 text-white/80 font-poppins leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}

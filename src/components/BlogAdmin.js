@@ -101,19 +101,51 @@ function BlogAdmin() {
     setImageUrl("");
   };
 
-  // Quill modules configuration
+  // Updated modules configuration with custom link handler
   const modules = {
-    toolbar: [
-      [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-      ['bold', 'italic', 'underline', 'strike'],
-      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-      [{ 'indent': '-1'}, { 'indent': '+1' }],
-      ['link', 'image'],
-      [{ 'color': [] }, { 'background': [] }],
-      [{ 'font': [] }],
-      [{ 'align': [] }],
-      ['clean']
-    ],
+    toolbar: {
+      container: [
+        [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+        ['bold', 'italic', 'underline', 'strike'],
+        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+        [{ 'indent': '-1'}, { 'indent': '+1' }],
+        ['link'],  // Keep only link, remove image from toolbar
+        [{ 'color': [] }, { 'background': [] }],
+        [{ 'align': [] }],
+        ['clean']
+      ],
+      handlers: {
+        link: function(value) {
+          if (value) {
+            const url = prompt('Enter URL:');
+            if (url) {
+              // Ensure URL has proper formatting
+              const formattedUrl = url.startsWith('http://') || url.startsWith('https://') 
+                ? url 
+                : `https://${url}`;
+              
+              // Get the Quill editor instance
+              const quill = this.quill;
+              const range = quill.getSelection();
+              
+              // If text is selected, format it as a link
+              if (range && range.length > 0) {
+                quill.format('link', formattedUrl);
+              } else {
+                // If no text is selected, insert the URL as a link
+                quill.insertText(range.index, url, 'link', formattedUrl);
+              }
+            }
+          } else {
+            // Remove link formatting if the button is clicked while a link is selected
+            this.quill.format('link', false);
+          }
+        }
+      }
+    },
+    clipboard: {
+      matchVisual: false
+    }
   };
 
   const formats = [

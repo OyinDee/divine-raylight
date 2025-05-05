@@ -16,8 +16,10 @@ import AdminLogin from './components/AdminLogin';
 import TestimonialList from './components/TestimonialList';
 import TestimonialAdmin from './components/TestimonialAdmin';
 import LatestBlog from './components/LatestBlog';
+import SubscriptionsList from './components/SubscriptionsList';
 import { auth } from './firebase';
 import { signOut } from "firebase/auth";
+import SingleBlogPost from './components/SingleBlogPost';
 
 function App() {
   const [admin, setAdmin] = useState(null);
@@ -43,6 +45,7 @@ function App() {
                 <>
                   <Navbar admin onLogout={handleAdminLogout} />
                   <BlogAdmin />
+                  <SubscriptionsList />
                   <TestimonialAdmin />
                 </>
               ) : (
@@ -77,6 +80,16 @@ function App() {
               <>
                 <Navbar blog />
                 <BlogList />
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path="/blog/:id"
+            element={
+              <>
+                <Navbar blog />
+                <SingleBlogPost />
                 <Footer />
               </>
             }

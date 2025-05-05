@@ -90,6 +90,7 @@ const ServicesSection = () => {
 							<li className="flex items-center gap-2">✓ Accommodation Booking</li>
 							<li className="flex items-center gap-2">✓ Educational Research Papers</li>
 							<li className="flex items-center gap-2">✓ Personal Statement</li>
+							<li className="flex items-center gap-2">✓ Visa refusal appeal services</li>
 						</ul>
 					</div>
 				</motion.div>

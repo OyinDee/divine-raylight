@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import DOMPurify from 'dompurify';
 import { db } from "../firebase";
 import { collection, getDocs, query, orderBy, limit } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
@@ -19,6 +20,16 @@ function LatestBlog() {
   const handleReadMore = () => {
     window.scrollTo(0, 0);
     navigate("/blog");
+  };
+
+  const truncateContent = (content) => {
+    if (!content) return '';
+    const temp = document.createElement('div');
+    temp.innerHTML = DOMPurify.sanitize(content);
+    const textContent = temp.textContent || temp.innerText;
+    return textContent.length > 150 ? 
+      textContent.substring(0, 150) + "..." : 
+      textContent;
   };
 
   if (!latest) return null;
@@ -52,7 +63,7 @@ function LatestBlog() {
                 {latest.createdAt?.toDate?.().toLocaleString()}
               </span>
               <p className="text-gray-700 font-poppins text-base md:text-lg mb-2">
-                {latest.content}
+                {truncateContent(latest.content)}
               </p>
             </div>
           </div>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { FiMenu, FiX } from 'react-icons/fi';
 import logo from '../assets/4.png';
 import logo7 from '../assets/1.png'; // <-- Add this import
@@ -38,21 +39,23 @@ const Navbar = ({ admin, blog, onLogout }) => {
               {admin ? (
                 <>
                   <li>
-                    <a href="/" className="text-white hover:text-gray-300 font-medium">Go to Home</a>
+                    <Link to="/" className="text-white hover:text-gray-300 font-medium">Go to Home</Link>
                   </li>
-                  <li>
-                    <button
-                      onClick={onLogout}
-                      className="ml-4 bg-red-500 hover:bg-red-600 text-white font-bold px-4 py-2 rounded transition"
-                    >
-                      Logout
-                    </button>
-                  </li>
+                  {onLogout && (
+                    <li>
+                      <button
+                        onClick={onLogout}
+                        className="ml-4 bg-red-500 hover:bg-red-600 text-white font-bold px-4 py-2 rounded transition"
+                      >
+                        Logout
+                      </button>
+                    </li>
+                  )}
                 </>
               ) : (
                 <>
                   <li>
-                    <a href="/" className="text-white hover:text-gray-300 font-medium">Home</a>
+                    <Link to="/" className="text-white hover:text-gray-300 font-medium">Home</Link>
                   </li>
                   <li>
                     <a href="#about" className="text-white hover:text-gray-300 font-medium">About</a>
@@ -64,10 +67,10 @@ const Navbar = ({ admin, blog, onLogout }) => {
                     <a href="#destinations" className="text-white hover:text-gray-300 font-medium">Destinations</a>
                   </li>
                   <li>
-                    <a href="/blog" className="text-white hover:text-gray-300 font-medium">Blog</a>
+                    <Link to="/blog" className="text-white hover:text-gray-300 font-medium">Blog</Link>
                   </li>
                   <li>
-                    <a href="/#testimonials" className="text-white hover:text-gray-300 font-medium">Testimonials</a>
+                    <Link to="/#testimonials" className="text-white hover:text-gray-300 font-medium">Testimonials</Link>
                   </li>
                   <li>
                     <a href="#contact" className="text-white hover:text-gray-300 font-medium">Contact</a>
@@ -94,21 +97,23 @@ const Navbar = ({ admin, blog, onLogout }) => {
             {admin ? (
               <>
                 <li>
-                  <a href="/" className="block text-white hover:text-gray-300 py-2" onClick={() => setIsOpen(false)}>Go to Home</a>
+                  <Link to="/" className="block text-white hover:text-gray-300 py-2" onClick={() => setIsOpen(false)}>Go to Home</Link>
                 </li>
-                <li>
-                  <button
-                    onClick={() => { setIsOpen(false); onLogout && onLogout(); }}
-                    className="w-full bg-red-500 hover:bg-red-600 text-white font-bold px-4 py-2 rounded transition text-left"
-                  >
-                    Logout
-                  </button>
-                </li>
+                {onLogout && (
+                  <li>
+                    <button
+                      onClick={() => { setIsOpen(false); onLogout(); }}
+                      className="w-full bg-red-500 hover:bg-red-600 text-white font-bold px-4 py-2 rounded transition text-left"
+                    >
+                      Logout
+                    </button>
+                  </li>
+                )}
               </>
             ) : (
               <>
                 <li>
-                  <a href="/" className="block text-white hover:text-gray-300 py-2" onClick={() => setIsOpen(false)}>Home</a>
+                  <Link to="/" className="block text-white hover:text-gray-300 py-2" onClick={() => setIsOpen(false)}>Home</Link>
                 </li>
                 <li>
                   <a href="#about" className="block text-white hover:text-gray-300 py-2" onClick={() => setIsOpen(false)}>About</a>
@@ -120,10 +125,10 @@ const Navbar = ({ admin, blog, onLogout }) => {
                   <a href="#destinations" className="block text-white hover:text-gray-300 py-2" onClick={() => setIsOpen(false)}>Destinations</a>
                 </li>
                 <li>
-                  <a href="/blog" className="block text-white hover:text-gray-300 py-2" onClick={() => setIsOpen(false)}>Blog</a>
+                  <Link to="/blog" className="block text-white hover:text-gray-300 py-2" onClick={() => setIsOpen(false)}>Blog</Link>
                 </li>
                 <li>
-                  <a href="/#testimonials" className="block text-white hover:text-gray-300 py-2" onClick={() => setIsOpen(false)}>Testimonials</a>
+                  <Link to="/#testimonials" className="block text-white hover:text-gray-300 py-2" onClick={() => setIsOpen(false)}>Testimonials</Link>
                 </li>
                 <li>
                   <a href="#contact" className="block text-white hover:text-gray-300 py-2" onClick={() => setIsOpen(false)}>Contact</a>

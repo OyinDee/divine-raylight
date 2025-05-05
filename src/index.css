@@ -3,7 +3,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 body {
   font-family: 'Poppins', 'Bricolage Grotesque', sans-serif;
   background-color: #FFFFFF;
@@ -91,4 +90,126 @@ h1, h2, h3, h4, h5, h6 {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+/* Rich text content formatting */
+.formatted-content {
+  line-height: 1.6;
+}
+
+.formatted-content h1,
+.formatted-content h2,
+.formatted-content h3,
+.formatted-content h4,
+.formatted-content h5,
+.formatted-content h6 {
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  font-weight: 600;
+  color: #002B18;
+}
+
+.formatted-content p {
+  margin-bottom: 1em;
+}
+
+.formatted-content ul,
+.formatted-content ol {
+  margin-left: 1.5em;
+  margin-bottom: 1em;
+}
+
+.formatted-content a {
+  color: #01AB6C;
+  text-decoration: underline;
+}
+
+.formatted-content blockquote {
+  border-left: 4px solid #01AB6C;
+  padding-left: 1em;
+  margin: 1em 0;
+  font-style: italic;
+}
+
+.formatted-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  margin: 1em 0;
+}
+
+/* Rich text content styling */
+.blog-content {
+  @apply prose prose-sm md:prose-base max-w-none;
+}
+
+.blog-content p {
+  @apply mb-4;
+}
+
+.blog-content a {
+  @apply text-accent hover:text-primary underline transition-colors;
+}
+
+.blog-content br {
+  @apply block content-[''] h-4;
+}
+
+/* Override Quill editor styles */
+.ql-editor {
+  white-space: pre-wrap;
+}
+
+.ql-editor p {
+  margin-bottom: 1em;
+}
+
+.ql-editor a {
+  color: var(--accent-color);
+  text-decoration: underline;
+}
+
+/* Override Tailwind prose styles to allow custom colors */
+.blog-content [style*="color:"] {
+  color: var(--color-override, inherit) !important;
+}
+
+.blog-content [style*="background-color:"] {
+  background-color: var(--bg-override, inherit) !important;
+}
+
+/* Fix specific inline styles */
+.blog-content span[style*="color:"],
+.blog-content p[style*="color:"],
+.blog-content strong[style*="color:"],
+.blog-content em[style*="color:"],
+.blog-content u[style*="color:"],
+.blog-content h1[style*="color:"],
+.blog-content h2[style*="color:"],
+.blog-content h3[style*="color:"],
+.blog-content h4[style*="color:"],
+.blog-content h5[style*="color:"],
+.blog-content h6[style*="color:"] {
+  color: unset !important;
+}
+
+.blog-content span[style*="background-color:"],
+.blog-content p[style*="background-color:"],
+.blog-content strong[style*="background-color:"],
+.blog-content em[style*="background-color:"],
+.blog-content u[style*="background-color:"] {
+  background-color: unset !important;
+}
+
+/* Preserve other rich text formatting */
+.blog-content strong {
+  @apply font-bold;
+}
+
+.blog-content em {
+  @apply italic;
+}
+
+.blog-content u {
+  @apply underline;
 }

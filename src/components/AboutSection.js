@@ -41,7 +41,7 @@ const AboutSection = () => {
               </h2>
               
               <p className="text-gray-700 mb-6 font-poppins">
-                Divine Raylight Consultancy is dedicated to empowering individuals to achieve their dreams abroad. With 9 years of excellence and expertise, we provide honest advice, practical solutions, and ongoing support for your international ambitions.
+                Divine Raylight Consultancy is dedicated to empowering individuals to achieve their dreams abroad. With 7 years of excellence and expertise, we provide honest advice, practical solutions, and ongoing support for your international ambitions.
               </p>
               
               <p className="text-gray-700 mb-6 font-poppins">

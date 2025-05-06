@@ -1,0 +1,25 @@
+.editor-wrapper {
+  margin-bottom: 2rem;
+}
+
+.blog-editor {
+  height: 400px;
+  margin-bottom: 2rem;
+}
+
+.blog-editor .ql-container {
+  height: 350px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 0 0 4px 4px;
+}
+
+.blog-editor .ql-toolbar {
+  border: 1px solid #ccc;
+  border-radius: 4px 4px 0 0;
+}
+
+.blog-editor .ql-editor {
+  min-height: 300px;
+  padding: 1rem;
+}

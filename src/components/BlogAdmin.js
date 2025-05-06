@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { db } from "../firebase";
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
+import { useEditor, EditorContent } from '@tiptap/react';
+import StarterKit from '@tiptap/starter-kit';
+import Link from '@tiptap/extension-link';
+import Heading from '@tiptap/extension-heading';
+import TextAlign from '@tiptap/extension-text-align';
 import { collection, addDoc, deleteDoc, doc, getDocs, updateDoc, query, orderBy, serverTimestamp } from "firebase/firestore";
 
 function BlogAdmin() {
@@ -14,6 +17,34 @@ function BlogAdmin() {
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 3;
+
+  const editor = useEditor({
+    extensions: [
+      StarterKit,
+      Link.configure({
+        openOnClick: false,
+        HTMLAttributes: {
+          class: 'text-blue-500 hover:text-blue-700',
+        },
+      }),
+      Heading.configure({
+        levels: [1, 2, 3],
+      }),
+      TextAlign.configure({
+        types: ['heading', 'paragraph'],
+      }),
+    ],
+    content: content,
+    onUpdate: ({ editor }) => {
+      setContent(editor.getHTML());
+    },
+  });
+
+  useEffect(() => {
+    if (editor && content !== editor.getHTML()) {
+      editor.commands.setContent(content);
+    }
+  }, [content, editor]);
 
   const fetchPosts = async () => {
     const q = query(collection(db, "blogPosts"), orderBy("createdAt", "desc"));
@@ -101,60 +132,62 @@ function BlogAdmin() {
     setImageUrl("");
   };
 
-  // Updated modules configuration with custom link handler
-  const modules = {
-    toolbar: {
-      container: [
-        [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-        ['bold', 'italic', 'underline', 'strike'],
-        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-        [{ 'indent': '-1'}, { 'indent': '+1' }],
-        ['link'],  // Keep only link, remove image from toolbar
-        [{ 'color': [] }, { 'background': [] }],
-        [{ 'align': [] }],
-        ['clean']
-      ],
-      handlers: {
-        link: function(value) {
-          if (value) {
-            const url = prompt('Enter URL:');
-            if (url) {
-              // Ensure URL has proper formatting
-              const formattedUrl = url.startsWith('http://') || url.startsWith('https://') 
-                ? url 
-                : `https://${url}`;
-              
-              // Get the Quill editor instance
-              const quill = this.quill;
-              const range = quill.getSelection();
-              
-              // If text is selected, format it as a link
-              if (range && range.length > 0) {
-                quill.format('link', formattedUrl);
-              } else {
-                // If no text is selected, insert the URL as a link
-                quill.insertText(range.index, url, 'link', formattedUrl);
-              }
-            }
-          } else {
-            // Remove link formatting if the button is clicked while a link is selected
-            this.quill.format('link', false);
-          }
-        }
-      }
-    },
-    clipboard: {
-      matchVisual: false
-    }
+  const formatUrl = (url) => {
+    if (!url) return '';
+    // Check if URL is already absolute
+    if (url.match(/^https?:\/\//)) return url;
+    // Check if URL is www
+    if (url.match(/^www\./)) return `https://${url}`;
+    // Add https:// to any other URL
+    return `https://${url}`;
   };
 
-  const formats = [
-    'header',
-    'bold', 'italic', 'underline', 'strike',
-    'list', 'bullet', 'indent',
-    'link', 'image',
-    'color', 'background', 'font', 'align'
-  ];
+  const MenuBar = () => (
+    <div className="border-b border-gray-200 p-2 flex flex-wrap gap-2 mb-2">
+      <button
+        onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
+        className={`px-2 py-1 rounded ${editor?.isActive('heading', { level: 1 }) ? 'bg-gray-200' : 'bg-white'}`}
+      >
+        H1
+      </button>
+      <button
+        onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
+        className={`px-2 py-1 rounded ${editor?.isActive('heading', { level: 2 }) ? 'bg-gray-200' : 'bg-white'}`}
+      >
+        H2
+      </button>
+      <button
+        onClick={() => editor.chain().focus().toggleBold().run()}
+        className={`px-2 py-1 rounded ${editor?.isActive('bold') ? 'bg-gray-200' : 'bg-white'}`}
+      >
+        Bold
+      </button>
+      <button
+        onClick={() => editor.chain().focus().toggleItalic().run()}
+        className={`px-2 py-1 rounded ${editor?.isActive('italic') ? 'bg-gray-200' : 'bg-white'}`}
+      >
+        Italic
+      </button>
+      <button
+        onClick={() => {
+          const url = window.prompt('Enter URL');
+          if (url) {
+            const formattedUrl = formatUrl(url);
+            editor.chain().focus().setLink({ href: formattedUrl }).run();
+          }
+        }}
+        className={`px-2 py-1 rounded ${editor?.isActive('link') ? 'bg-gray-200' : 'bg-white'}`}
+      >
+        Link
+      </button>
+      <button
+        onClick={() => editor.chain().focus().unsetLink().run()}
+        className="px-2 py-1 rounded bg-white"
+      >
+        Unlink
+      </button>
+    </div>
+  );
 
   // Pagination logic
   const totalPages = Math.ceil(posts.length / postsPerPage);
@@ -175,17 +208,14 @@ function BlogAdmin() {
           required
           disabled={loading}
         />
-        <div className="h-96">
-          <ReactQuill
-            theme="snow"
-            value={content}
-            onChange={setContent}
-            modules={modules}
-            formats={formats}
-            placeholder="Write your blog post..."
-            className="h-80"
-          />
+        
+        <div className="border rounded-lg overflow-hidden">
+          <MenuBar />
+          <div className="min-h-[300px] p-4">
+            <EditorContent editor={editor} />
+          </div>
         </div>
+
         <div className="mt-4">
           <label className="block mb-1 font-medium text-gray-700">Featured Image</label>
           <input

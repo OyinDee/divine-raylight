@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaPlane } from 'react-icons/fa';
+import backgroundImage from '../assets/tourist-carrying-baggage.jpg';
 
 const planeVariants = {
   initial: { x: '-10vw', y: '10vh', rotate: -10, opacity: 0 },
@@ -24,7 +25,7 @@ const HeroSection = () => {
       id="home"
       className="relative h-screen flex items-center justify-center text-white overflow-hidden font-bricolage"
       style={{
-        backgroundImage: `url('https://images.unsplash.com/photo-1744792423553-70a2f22eb93f?w=1500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGFpcnBvcnQlMjB3aXRoJTIwdHJhdmVsbGVyc3xlbnwwfHwwfHx8MA%3D%3D')`,
+        backgroundImage: `url(${backgroundImage})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}

@@ -1,5 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import aboutImage from '../assets/tourist-carrying-luggage.jpg'
+import backgroundImage from '../assets/tourist-carrying-luggage.jpg';
 
 const AboutSection = () => {
   return (
@@ -16,9 +18,10 @@ const AboutSection = () => {
             >
               {/* Plane image with accent border and shadow */}
               <div className="absolute -top-4 -left-4 w-64 h-64 bg-accent rounded-lg -z-10 opacity-20"></div>
-              <img 
-                src="https://images.unsplash.com/photo-1574175294984-7f2b90bdc07a?q=80&w=1937&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
-                alt="Airplane flying over clouds" 
+              <img
+                src={aboutImage}
+          
+                alt="Airplane flying over clouds"
                 className="rounded-lg shadow-xl w-full h-auto object-cover"
               />
               <div className="absolute -bottom-4 -right-4 w-64 h-64 bg-primary rounded-lg -z-10 opacity-10"></div>

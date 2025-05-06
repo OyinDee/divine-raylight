@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import aboutImage from '../assets/tourist-carrying-luggage.jpg'
-import backgroundImage from '../assets/tourist-carrying-luggage.jpg';
+// import backgroundImage from '../assets/tourist-carrying-luggage.jpg';
 
 const AboutSection = () => {
   return (

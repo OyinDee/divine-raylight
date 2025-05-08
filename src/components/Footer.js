@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaPhone, FaEnvelope } from 'react-icons/fa';
 import logo from '../assets/4.png';
 
 const Footer = () => {
@@ -18,20 +18,6 @@ const Footer = () => {
             <p className="text-gray-100 mb-6">
               Empowering your journey abroad with reliable guidance, transparent processes, and a commitment to your success. Your aspirations, our expertise.
             </p>
-            <div className="flex space-x-4 mt-4">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="bg-accent text-primary p-2 rounded-full hover:bg-white hover:text-accent transition-colors">
-                <FaFacebookF />
-              </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="bg-accent text-primary p-2 rounded-full hover:bg-white hover:text-accent transition-colors">
-                <FaTwitter />
-              </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="bg-accent text-primary p-2 rounded-full hover:bg-white hover:text-accent transition-colors">
-                <FaInstagram />
-              </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="bg-accent text-primary p-2 rounded-full hover:bg-white hover:text-accent transition-colors">
-                <FaLinkedinIn />
-              </a>
-            </div>
           </div>
           
           {/* Quick Links */}
@@ -72,7 +58,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center">
                 <FaEnvelope className="mr-3 text-accent" />
-                <a href="mailto:info@divineraylight.com" className="text-gray-100 hover:text-accent transition-colors">info@divineraylight.com</a>
+                <a href="mailto:info@drlc.ng" className="text-gray-100 hover:text-accent transition-colors">info@drlc.ng</a>
               </li>
             </ul>
           </div>

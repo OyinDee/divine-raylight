@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.e597b446.css",
-    "main.js": "/static/js/main.6883a93a.js",
+    "main.css": "/static/css/main.dbff35ef.css",
+    "main.js": "/static/js/main.e22c2e15.js",
     "static/media/tourist-carrying-baggage.jpg": "/static/media/tourist-carrying-baggage.be572e86705f0df02147.jpg",
     "static/media/tourist-carrying-luggage.jpg": "/static/media/tourist-carrying-luggage.95475b0cedaa53959179.jpg",
     "static/media/4.png": "/static/media/4.3ddd37ed1ca9c701d073.png",
     "static/media/1.png": "/static/media/1.1a34543a90b2d16aef5a.png",
     "index.html": "/index.html",
-    "main.e597b446.css.map": "/static/css/main.e597b446.css.map",
-    "main.6883a93a.js.map": "/static/js/main.6883a93a.js.map"
+    "main.dbff35ef.css.map": "/static/css/main.dbff35ef.css.map",
+    "main.e22c2e15.js.map": "/static/js/main.e22c2e15.js.map"
   },
   "entrypoints": [
-    "static/css/main.e597b446.css",
-    "static/js/main.6883a93a.js"
+    "static/css/main.dbff35ef.css",
+    "static/js/main.e22c2e15.js"
   ]
 }

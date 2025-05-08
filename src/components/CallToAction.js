@@ -34,21 +34,13 @@ const CallToAction = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <a 
-              href="https://wa.me/2348131057809"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-animate bg-accent text-white px-8 py-4 rounded-md font-bold inline-block shadow hover:bg-white hover:text-accent transition-all"
-            >
-              Start Conversation
-            </a>
             <a
               href="https://wa.me/2348131057809"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 bg-green-500 text-white px-8 py-4 rounded-md font-bold shadow hover:bg-green-600 transition-all"
             >
-              <FaWhatsapp size={22} /> Chat on WhatsApp
+              <FaWhatsapp size={22} /> Start a conversation on WhatsApp!
             </a>
           </motion.div>
         </div>

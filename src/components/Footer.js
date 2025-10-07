@@ -50,7 +50,10 @@ const Footer = () => {
             <ul className="space-y-4">
               <li className="flex items-start">
                 <FaMapMarkerAlt className="mr-3 mt-1 text-accent" />
-                <span className="text-gray-100">House 32, Road 11, Ikota Villa Estate, Lekki,  Lagos, Nigeria</span>
+                <div>
+                  <span className="text-gray-100 block">Office 1: House 32, Road 11, Ikota Villa Estate, Lekki, Lagos, Nigeria</span>
+                  <span className="text-gray-100 block mt-3 leading-tight">Office 2: Sheffield 3, S3 7LG, England, United Kingdom</span>
+                </div>
               </li>
               <li className="flex items-center">
                 <FaPhone className="mr-3 text-accent" />
